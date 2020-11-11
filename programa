@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define n1 100
+#define n2 15
+
+int main()
+{
+     char nome_cliente[n1], numero_cliente[n2], data_nascimento[n2], filmes_que_ja_alugou[n1], filme_alugado[n1], preco_filme[n2], data_locacao[n2], data_devolucao[n2], condicao_filme[n1];
+     int pen;
+     printf("\n LOCADORA DE FILMES: \n");
+     int menu=1,filme,cliente;
+
+    
+    
+     while (menu!=0)
+     {
+        printf("\n MENU: \n\n1 - Cadastrar Cliente: \n2 - Cadastrar Filme \n0 - Sair\n\nDigite o valor desejado: ");
+        scanf("%d",&menu);
+        getchar();
+
+        
+        
+        
+     switch(menu)
+     {
+        case 1:
+            system("cls");
+             printf("\nCadastrar Cliente\n\nDigite o seu nome : ");
+                gets(nome_cliente);
+                printf("\nDigite o seu numero : ");
+                scanf("%d",&numero_cliente);
+                getchar();
+                printf("\nDigite sua data de nascimento: ");
+               gets(data_nascimento);
+
+                    printf("\n\nCadastro concluido!\n Tecle ENTER para continuar");
+                    getchar();
+                    system("cls");
+                    break;
+
+        case 2:
+                system("cls");
+                printf("\nCadastrar Filme\n\nDigite o nome do filme alugado anteriormente : ");
+                gets(filmes_que_ja_alugou);
+                printf("\nDigite o filme alugado :");
+                gets(filme_alugado);
+                printf("\nDigite o preco do filme :");
+                gets(preco_filme);
+                printf("\nDigite a data de locacao :");
+                gets(data_locacao);
+                printf("\nDigite a data de devolucao :");
+                gets(data_devolucao);
+                printf("\nPossui alguma pendencia?\n 1-Sim \n 2-Nao\n");
+                scanf("%d",&pen);
+                    getchar();
+                    system("cls");
+                    break;
+
+         case 0:
+               system("cls");
+               printf("Programa Encerrado");
+               getchar();
+               system("cls");
+               break;
+        }
+        
+        
+        
+        
+        
+        switch(pen)
+        {
+            case 1: printf("O filme nao pode ser alugado, Tecle ENTER para retornar ao MENU");
+            getchar();
+            system("cls");
+            break;
+            case 2: printf("Aluguel concluido, Tecle ENTER para retornar ao MENU");
+            getchar();
+            system("cls");
+            break;
+        }
+  
+    }
