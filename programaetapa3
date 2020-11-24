@@ -1,0 +1,159 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define n1 100
+#define n2 15
+
+int  conta(int filme){
+
+                    int quantidade;
+                    printf("\n Digite a quantidade de filmes que deseja alugar :");
+                    scanf("%d",& quantidade);
+                    quantidade=quantidade*filme;
+                    printf("\n Valor : %d",quantidade);
+                    getchar();
+                    getchar();
+
+
+
+                    }
+struct dados_cliente
+                    {
+                    char nome_cliente[n1], data_nascimento[n2];
+                    int  numero_cliente;
+
+                    };
+struct dados_filme
+{char filmes_que_ja_alugou[n1], filme_alugado[n1], data_locacao[n2], data_devolucao[n2], condicao_filme[n1];
+int pen,preco_filme;
+};
+ void mensagemmenu(){
+     printf("\n MENU: \n\n1 - Cadastrar Cliente: \n2 - Cadastrar Filme \n0 - Sair\n\nDigite o valor desejado: ");
+            }
+int main()
+{
+    FILE *pont_arq;
+    pont_arq = fopen ("locadora.txt","a");
+
+    struct dados_cliente cliente[100];
+
+    struct dados_filme filmes [100];
+
+
+     printf("\n LOCADORA DE FILMES: \n");
+     int menu=1,filme,client,x=0,y=0,numeroteste,i,j=0;
+
+
+
+     while (menu!=0)
+     {
+
+                mensagemmenu();
+                scanf("%d",&menu);
+                getchar();
+
+
+
+
+     switch(menu)
+     {
+        case 1:
+            system("cls");
+            j=0;
+            printf("\n\nCadastrar Cliente\nDigite o seu numero : ");
+                scanf("%d",&numeroteste);
+                for(i=0;i<100;i++)
+                {
+                 if(numeroteste==cliente[i].numero_cliente)
+                 {
+                     j++;
+                 }
+                }
+                if(j==0)
+                {
+                            cliente[x].numero_cliente=numeroteste;
+                            fprintf(pont_arq, "\n Numero do cliente : %d",cliente[x].numero_cliente);
+                            getchar();
+                            printf("\nDigite o seu nome : ");
+                            gets(cliente[x].nome_cliente);
+                            fprintf(pont_arq, "\n Nome do cliente: %s",cliente[x].nome_cliente);
+
+                            printf("\nDigite sua data de nascimento: ");
+                            gets(cliente[x].data_nascimento);
+                            fprintf(pont_arq, "\n Data de nascimento: %s",cliente[x].data_nascimento);
+
+                            printf("\n\nCadastro concluido!\n Tecle ENTER para continuar");
+                            getchar();
+                            system("cls");
+                            x++;
+
+
+                }
+                else
+                {
+                    printf(" NUMERO JA ESTA EM USO");
+
+                }
+
+
+                    break;
+
+
+        case 2:
+                system("cls");
+
+                printf("\nCadastrar Filme\n\nDigite o nome do filme alugado anteriormente : ");
+                gets(filmes[y].filmes_que_ja_alugou);
+                fprintf(pont_arq, "\n\n Filmes que ja alugou : %s",filmes[y].filmes_que_ja_alugou);
+
+                printf("\nDigite o filme alugado :");
+                gets(filmes[y].filme_alugado);
+                fprintf(pont_arq, "\n Filme alugado : %s",filmes[y].filme_alugado);
+
+                printf("\nDigite o preco do filme :");
+                scanf("%d",&filmes[y].preco_filme);
+                fprintf(pont_arq, "\n Preco do filme: %d",filmes[y].preco_filme);
+                getchar();
+
+                printf("\nDigite a data de locacao :");
+                gets(filmes[y].data_locacao);
+                fprintf(pont_arq, "\n Data de locacao: %s",filmes[y].data_locacao);
+
+                printf("\nDigite a data de devolucao :");
+                gets(filmes[y].data_devolucao);
+                fprintf(pont_arq, "\n Data de devolucao: %s",filmes[y].data_devolucao);
+
+                printf("\nPossui alguma pendencia?\n 1-Sim \n 2-Nao\n");
+                scanf("%d",&filmes[y].pen);
+                fprintf(pont_arq, "\n Possui alguma pendencia:%d",filmes[y].pen);
+                conta(filmes[y].preco_filme);
+                    getchar();
+                    system("cls");
+                    break;
+
+         case 0:
+                system("cls");
+                printf("Programa Encerrado");
+                getchar();
+                system("cls");
+               break;
+        }
+
+
+
+
+
+        switch(filmes[y].pen)
+        {
+            case 1: printf("O filme nao pode ser alugado, Tecle ENTER para retornar ao MENU");
+            getchar();
+            system("cls");
+            break;
+            case 2: printf("Aluguel concluido, Tecle ENTER para retornar ao MENU");
+            getchar();
+            system("cls");
+            break;
+        }
+     }
+}
